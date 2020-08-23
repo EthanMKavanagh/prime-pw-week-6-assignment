@@ -6,14 +6,13 @@ const maxGarage = 3;
 /*
 Do not change newCar for base mode!
 */
-function newCar( yearInput, makeInput, modelInput, priceInput, imageInput ){
-  console.log( 'in newCar:', yearInput, makeInput, modelInput, priceInput, imageInput );
+function newCar( yearInput, makeInput, modelInput, priceInput ){
+  console.log( 'in newCar:', yearInput, makeInput, modelInput, priceInput );
   const newCarObject = {
     year: yearInput,
     make: makeInput,
     model: modelInput,
     price: priceInput,
-    image: imageInput
   } // end newCarObject
   garage.push( newCarObject );
   return true;
@@ -28,13 +27,11 @@ function addCar(){
   let make = $( '#makeInput' ).val();
   let model = $( '#modelInput' ).val();
   let price = $( '#priceInput' ).val();
-  let image = $( '#imageInput' ).val();
   newCar( year, make, model, price );
   $( '#yearInput' ).val( '' );
   $( '#makeInput' ).val( '' );
   $( '#modelInput' ).val( '' );
   $( '#priceInput' ).val( '' );
-  $( '#imageInput' ).val( '' );
 
   if( garage.length >= maxGarage ){
     console.log( 'disable fields' );
@@ -42,10 +39,9 @@ function addCar(){
     $( '#makeInput' ).attr( 'disabled', true );
     $( '#modelInput' ).attr( 'disabled', true );
     $( '#priceInput' ).attr( 'disabled', true );
-    $( '#imageInput' ).attr( 'disabled', true );
   } // end if
 
-  if( !year || !make || !model || !price || !image ){
+  if( !year || !make || !model || !price ){
     alert( 'This form will not submit!' );
     return false;
   } // end if
@@ -61,7 +57,7 @@ function displayCars(){
   el.empty();
 
   for( newCarObject of garage ){
-    el.append( `<li>` + newCarObject.year + ` - ` + newCarObject.make + ` - ` + newCarObject.model + ` - ` + `$` + newCarObject.price + `     ` + newCarObject.image + `</li>` );
+    el.append( `<li>` + newCarObject.year + ` - ` + newCarObject.make + ` - ` + newCarObject.model + ` - ` + `$` + newCarObject.price + `</li>` );
   } // end for
 
 } // end displayCars
