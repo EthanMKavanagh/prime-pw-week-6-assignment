@@ -25,7 +25,10 @@ function addCar(){
   let year = $( '#yearInput' ).val();
   let make = $( '#makeInput' ).val();
   let model = $( '#modelInput' ).val();
-  newCar( year, make, model, price );
+  newCar( year, make, model );
+  $( '#yearInput' ).val( '' );
+  $( '#makeInput' ).val( '' );
+  $( '#modelInput' ).val( '' );
 
   displayCars();
 
