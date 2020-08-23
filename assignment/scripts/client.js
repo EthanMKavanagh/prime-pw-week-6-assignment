@@ -33,6 +33,17 @@ function addCar(){
   $( '#modelInput' ).val( '' );
   $( '#priceInput' ).val( '' );
 
+
+  if( garage.length >= maxGarage ){
+    console.log( 'disable fields' );
+    $( '#yearInput' ).attr( 'disabled', true );
+    $( '#makeInput' ).attr( 'disabled', true );
+    $( '#modelInput' ).attr( 'disabled', true );
+    $( '#priceInput' ).attr( 'disabled', true );
+    $( '#imageInput' ).attr( 'disabled', true );
+  } // end if
+
+
   displayCars();
   carExpense();
 } // end addCar
