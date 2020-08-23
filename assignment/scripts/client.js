@@ -8,14 +8,21 @@ Do not change newCar for base mode!
 */
 function newCar( yearInput, makeInput, modelInput, priceInput ){
   console.log( 'in newCar:', yearInput, makeInput, modelInput, priceInput );
-  const newCarObject = {
-    year: yearInput,
-    make: makeInput,
-    model: modelInput,
-    price: priceInput,
-  } // end newCarObject
-  garage.push( newCarObject );
-  return true;
+  if( !$( '#yearInput' ).val() || !$( '#makeInput' ).val() ||
+      !$( '#modelInput' ).val() || !$( '#priceInput' ).val() ){
+    alert( 'This form will not submit!' );
+    return false;
+  } // end if
+  else if( garage ){
+    const newCarObject = {
+      year: yearInput,
+      make: makeInput,
+      model: modelInput,
+      price: priceInput,
+    } // end newCarObject
+    garage.push( newCarObject );
+    return true;
+  } // end else if
 } // end newCar
 
 function readyNow(){
@@ -41,10 +48,6 @@ function addCar(){
     $( '#priceInput' ).attr( 'disabled', true );
   } // end if
 
-  if( !year || !make || !model || !price ){
-    alert( 'This form will not submit!' );
-    return false;
-  } // end if
 
   displayCars();
   carExpense();
