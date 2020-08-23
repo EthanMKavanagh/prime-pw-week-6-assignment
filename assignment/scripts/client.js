@@ -1,17 +1,18 @@
 $( document ).ready( readyNow );
 
 let garage = [];
-
+const maxGarage = 3;
 
 /*
 Do not change newCar for base mode!
 */
-function newCar( yearInput, makeInput, modelInput ){
-  console.log( 'in newCar:', yearInput, makeInput, modelInput );
+function newCar( yearInput, makeInput, modelInput, priceInput ){
+  console.log( 'in newCar:', yearInput, makeInput, modelInput, priceInput );
   const newCarObject = {
     year: yearInput,
     make: makeInput,
     model: modelInput,
+    price: priceInput,
   } // end newCarObject
   garage.push( newCarObject );
   return true;
@@ -25,13 +26,15 @@ function addCar(){
   let year = $( '#yearInput' ).val();
   let make = $( '#makeInput' ).val();
   let model = $( '#modelInput' ).val();
-  newCar( year, make, model );
+  let price = $( '#priceInput' ).val();
+  newCar( year, make, model, price );
   $( '#yearInput' ).val( '' );
   $( '#makeInput' ).val( '' );
   $( '#modelInput' ).val( '' );
+  $( '#priceInput' ).val( '' );
 
   displayCars();
-
+  carExpense();
 } // end addCar
 
 
@@ -41,7 +44,7 @@ function displayCars(){
   el.empty();
 
   for( newCarObject of garage ){
-    el.append( `<li>` + newCarObject.year + ` - ` + newCarObject.make + ` - ` + newCarObject.model + `</li>` );
+    el.append( `<li>` + newCarObject.year + ` - ` + newCarObject.make + ` - ` + newCarObject.model + ` - ` + `$` + newCarObject.price + `</li>` );
   } // end for
 
 } // end displayCars
