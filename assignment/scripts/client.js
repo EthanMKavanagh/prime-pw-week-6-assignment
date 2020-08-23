@@ -2,6 +2,7 @@ $( document ).ready( readyNow );
 
 let garage = [];
 
+
 /*
 Do not change newCar for base mode!
 */
@@ -24,11 +25,10 @@ function addCar(){
   let year = $( '#yearInput' ).val();
   let make = $( '#makeInput' ).val();
   let model = $( '#modelInput' ).val();
-  newCar( year, make, model );
-
-
+  newCar( year, make, model, price );
 
   displayCars();
+
 } // end addCar
 
 
@@ -42,3 +42,15 @@ function displayCars(){
   } // end for
 
 } // end displayCars
+
+
+function carExpense(){
+  let totalPrice = 0;
+  for( let i = 0; i < garage.length; i++ ){
+    totalPrice += Number( garage[ i ].price );
+  } // end for
+  console.log( 'totalPrice:', totalPrice );
+  let el = $( '#carCost' );
+  el.empty();
+  el.append( totalPrice );
+} // end carExpenses
