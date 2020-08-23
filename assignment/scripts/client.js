@@ -43,6 +43,11 @@ function addCar(){
     $( '#imageInput' ).attr( 'disabled', true );
   } // end if
 
+  if( !year || !make || !model || !price ){
+    alert( 'This form will not submit!' );
+    return false;
+  } // end if
+
 
   displayCars();
   carExpense();
