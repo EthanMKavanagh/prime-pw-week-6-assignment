@@ -1,15 +1,44 @@
+$( document ).ready( readyNow );
+
 let garage = [];
 
 /*
 Do not change newCar for base mode!
 */
-function newCar(yearInput, makeInput, modelInput){
-  console.log('in newCar:', yearInput, makeInput, modelInput);
+function newCar( yearInput, makeInput, modelInput ){
+  console.log( 'in newCar:', yearInput, makeInput, modelInput );
   const newCarObject = {
     year: yearInput,
     make: makeInput,
-    model: modelInput
-  }
-  garage.push(newCarObject);
+    model: modelInput,
+  } // end newCarObject
+  garage.push( newCarObject );
   return true;
 } // end newCar
+
+function readyNow(){
+  $( '#addCarButton' ).on( 'click', addCar );
+} // end readyNow
+
+function addCar(){
+  let year = $( '#yearInput' ).val();
+  let make = $( '#makeInput' ).val();
+  let model = $( '#modelInput' ).val();
+  newCar( year, make, model );
+
+
+
+  displayCars();
+} // end addCar
+
+
+function displayCars(){
+  console.log( 'in displayCars' );
+  let el = $( '#carsOut' );
+  el.empty();
+
+  for( newCarObject of garage ){
+    el.append( `<li>` + newCarObject.year + ` - ` + newCarObject.make + ` - ` + newCarObject.model + `</li>` );
+  } // end for
+
+} // end displayCars
